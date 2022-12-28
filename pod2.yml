@@ -1,0 +1,11 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod2
+spec:
+  containers:
+    - name: c01
+      image: ubuntu
+      command: ["/bin/bash", "-c", "more /etc/os-release;"]
+  restartPolicy: Never
+
