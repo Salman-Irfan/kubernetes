@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mulcont
+spec:
+  containers:
+    - name: con1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo container1; sleep 5; done"]
+    - name: con2
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo container2; sleep 5; done"]
+
+      # to get ip of container/pod inside pod
+      # $ kubectl.exe exec mulcont -c con2 -- hostname -i
+      # 10.1.0.23
+
+      # to go inside the container on a pod
+      # kubectl exec mulcont -it -c con2 -- bash
