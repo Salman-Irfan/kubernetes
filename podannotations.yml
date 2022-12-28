@@ -8,6 +8,6 @@ spec:
   containers:
     - name: c02annotations
       image: ubuntu
-      command: ["/bin/bash", "-c", "while true; do echo 'pod with annotaions'; sleep 5; echo '2nd'; more /etc/os-release; done"]
+      command: ["/bin/bash", "-c", "echo 'pod with annotaions'; sleep 5; echo '2nd'; more /etc/os-release;"]
   restartPolicy: Never
 
