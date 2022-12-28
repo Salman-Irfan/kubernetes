@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: podwithports
+spec:
+  containers:
+    - name: portcon
+      image: httpd
+      ports:
+      - containerPort: 80
+
+# how to get ip
+#  kubectl get pods -o wide => we'll get IP & NODE section, copy IP section
+# curl IP:80
+
+
+
+
+
