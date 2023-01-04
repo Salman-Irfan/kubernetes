@@ -1,0 +1,28 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: labelspod
+  labels:
+    env: development
+    class: pods
+spec:
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo labelspod 1; sleep 5; done"]
+
+# imperative method
+# in order to assign label to a pod from command 
+# kubectl label pods <name of pod> <label key> = <label value> 
+
+# kubectl label pods labelspod myname=salman 
+
+# selectors
+# kubectl get pods -l env=development
+# kubectl get pods -l env!=development
+
+# multiple selectors
+# kubectl get pods -l 'env in (development,testing)'
+# kubectl get pods -l 'env notin (development,testing)'
+
+# kubectl get pods -l env=development,class=pods
