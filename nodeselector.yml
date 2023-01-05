@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nodeselectors
+  labels:
+    env: development
+    class: pods
+spec:
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo labelspod 1; sleep 5; done"]
+nodeSelector:
+  hardware: t2-medium
+
+  # kubectl get nodes
+  # output => Name => xyz
+  # kubectl label nodes xyz hardware=t2-medium
+  # kubectl describe pod nodeselectors
+  

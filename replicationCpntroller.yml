@@ -1,0 +1,35 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: replicationcontroller
+spec:
+  replicas: 2
+  selector:
+    myname: salman
+  template:
+    metadata:
+      name: replicationcontrollerpod
+      labels:
+        myname: salman
+    spec:
+      containers:
+        - name: conrc
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo hello replication controller; sleep 5; done"]
+
+# kubectl get pods
+# kubectl get pods -o wide
+# NAME                          READY   STATUS    RESTARTS   AGE   IP          NODE             NOMINATED NODE   READINESS GATES
+# replicationcontroller-5rp9r   1/1     Running   0          19s   10.1.0.56   docker-desktop   <none>           <none>
+# replicationcontroller-vsqj2   1/1     Running   0          19s   10.1.0.55   docker-desktop   <none>           <none>
+
+
+# kubectl get rc
+# kubectl get rc -o wide
+# NAME                    DESIRED   CURRENT   READY   AGE   CONTAINERS   IMAGES   SELECTOR
+# replicationcontroller   2         2         2       73s   conrc        ubuntu   myname=salman
+
+# kubectl describe rc replicationcontroller
+
+# how to scale up or down after creation
+# kubectl scale --replicas=8 rc -l myname=salman
